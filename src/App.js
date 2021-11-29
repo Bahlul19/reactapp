@@ -5,7 +5,7 @@ import First from './component/First/First';
 
 
 class App extends Component {
-
+/*
   state = {
     persons : [
       {
@@ -21,6 +21,29 @@ class App extends Component {
       }
     ]
   }
+  */
+
+  // clickHandler = () => {
+  //   alert('hello');
+  // }
+
+  state = {
+    name : ''
+  }
+
+  clickHandler = (event) => {
+    console.log(event.target);
+  }
+
+  inputHandler = (event) => {
+    // console.log(event.target.value);
+    // this.setState({
+    //   name: event.target.value
+    // });
+    this.setState({
+      name: event.target.value
+      });
+  }
 
   render(){
     return(
@@ -32,7 +55,7 @@ class App extends Component {
 
       {/* <Counter /> */}
 
-      {
+      {/* {
         this.state.persons.map((people, index) => {
           return <First 
                         key={index}
@@ -41,7 +64,16 @@ class App extends Component {
                         address={people.address}
                   />
         })
-      }
+      } */}
+      
+      <input onChange={ this.inputHandler } type="text" value={ this.state.name } placeholder="Please enter your name" />
+
+      <button onClick={ this.clickHandler }>
+      {/* <button onClick={ (event) => console.log(event) }> */}
+        Click Me
+      </button>
+
+      { this.state.name ? <p> Hello MR. {this.state.name}</p> : '' }
 
     </div>
     );
