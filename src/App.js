@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import First from './component/First/First';
 // import Counter from './component/Counter/Counter';
+import Example from './Example';
 
 
 class App extends Component {
@@ -45,6 +46,7 @@ class App extends Component {
       });
   }
 
+
   render(){
     return(
       <div className="App">
@@ -74,6 +76,9 @@ class App extends Component {
       </button>
 
       { this.state.name ? <p> Hello MR. {this.state.name}</p> : '' }
+
+      
+      <Example name="Tausif"/>
 
     </div>
     );
