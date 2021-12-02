@@ -7,7 +7,11 @@ import Book from "./Book/Book";
         <div>
             {this.props.books.map(book => {
                 return(
-                    <Book deleteHandler= { this.props.deleteHandler() } book={ book } />
+                    <Book
+                        changeHandler= {this.props.changeHandler()} 
+                        deleteHandler= { this.props.deleteHandler() } 
+                        book={ book } 
+                    />
                 )
             })
             }
