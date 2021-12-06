@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import axios from "axios";
+import PostForm from "./component/Forms/PostForm";
 // import Books from './component/Books/Books';
 class App extends Component {
 /*
@@ -77,10 +78,15 @@ componentDidMount(){
     else{
       return(
         <div className='container'>
-          <ul className='list-group'>
+          {/* <ul className='list-group'>
             { posts.map(post => <li key={ post.id } className='list-group-item'>{ post.title }</li>)
             }
-          </ul>
+          </ul> */}
+          <div className='row'>
+            <div className='col-md-8 offset-sm-2'>
+              <PostForm />
+            </div>
+          </div>
         </div>
       )
     }
