@@ -7,7 +7,7 @@ const intialState = {
     bio:'',
     country:'',
     gender:'',
-    skill:[]   
+    skills:[]   
 }
 
 class PostForm extends Component {
@@ -17,12 +17,32 @@ class PostForm extends Component {
         this.myForm = React.createRef();
     }
 
-    state = intialState;
+    state = {
+        ...intialState
+    };
 
-    changeHandler = (event) =>{
-        this.setState({
-            [event.target.name]: event.target.value
-        });
+    changeHandler = event => {
+        if(event.target.type === 'checkbox'){
+            if(event.target.checked){
+                this.setState({
+                    ... this.state,
+                    skills: 
+                    this.state.skills.concat(event.target.value)
+                })
+            }
+            else{
+                this.setState({
+                    ... this.state,
+                    skills: 
+                    this.state.skills.filter(skill => skill !== event.target.value)
+                })
+            }
+        }
+        else{
+            this.setState({
+                [event.target.name]: event.target.value
+            });
+        }
     }
 
     submitHandler = event => {
@@ -139,10 +159,25 @@ class PostForm extends Component {
 
         <div className='form-group'>
             <div className='form-check'>
-                <input className='form-check-input' id='js' value='JavaScript' type='checkbox'></input>
+                <input name='skills' onChange={this.changeHandler} className='form-check-input' id='js' value='JavaScript' type='checkbox'></input>
+                <label htmlFor='js'>JavaScript</label>
+            </div>
+
+            <div className='form-check'>
+                <input name='skills' onChange={this.changeHandler} className='form-check-input' id='react' value='React JS' type='checkbox'></input>
+                <label htmlFor='react'>React JS</label>
+            </div>
+            
+            <div className='form-check'>
+                <input name='skills' onChange={this.changeHandler} className='form-check-input' id='php' value='PHP' type='checkbox'></input>
+                <label htmlFor='php'>PHP</label>
+            </div>
+
+            <div className='form-check'>
+                <input name='skills' onChange={this.changeHandler} className='form-check-input' id='node' value='Node' type='checkbox'></input>
+                <label htmlFor='node'>Node</label>
             </div>
         </div>
-
 
         <button className='btn btn-primary' type='submit'>Submit</button>
         </form>
